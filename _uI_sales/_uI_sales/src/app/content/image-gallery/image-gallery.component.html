@@ -1,0 +1,68 @@
+<div class="image">
+  <img appImgLoad
+       [src]="previewSrc"
+       (error)="onPreviewError($event)"
+       class="image-list gallery-main-img"
+       [alt]="alt"
+       (click)="openModal()"
+       loading="lazy">
+</div>
+
+<div class="gallery-modal" *ngIf="modalOpen"
+     (click)="closeModal()"
+     (touchstart)="onTouchStart($event)"
+     (touchend)="onTouchEnd($event)">
+
+  <button type="button" class="gallery-close" (click)="closeModal(); $event.stopPropagation()" aria-label="close">
+    &times;
+  </button>
+
+  <div class="gallery-stage" (click)="$event.stopPropagation()">
+    <button type="button"
+            class="gallery-nav gallery-nav-prev"
+            *ngIf="hasMultiple && !zoomed"
+            (click)="goPrev(); $event.stopPropagation()"
+            aria-label="previous">
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    </button>
+
+    <div class="gallery-media" [class.is-zoomed]="zoomed">
+      <div class="gallery-loader" *ngIf="imageLoading" aria-live="polite" aria-busy="true">
+        <div class="gallery-spinner"></div>
+        <span class="gallery-loader-text">در حال بارگذاری...</span>
+      </div>
+      <div #zoomViewport
+           class="gallery-zoom-viewport"
+           [class.is-zoomed]="zoomed"
+           [class.is-dragging]="zoomed"
+           (pointerdown)="onPointerDown($event)"
+           (pointermove)="onPointerMove($event)"
+           (pointerup)="onPointerUp($event)"
+           (pointercancel)="onPointerUp($event)">
+        <img #modalImg
+             class="gallery-modal-img"
+             [class.is-loading]="imageLoading"
+             [class.is-zoomed]="zoomed"
+             [style.transform]="imageTransform"
+             [src]="modalImageUrl"
+             [alt]="caption || alt"
+             (load)="onModalImageLoad()"
+             (error)="onModalImageError()"
+             draggable="false">
+      </div>
+      <div class="gallery-caption" *ngIf="caption && !imageLoading">{{ caption }}</div>
+      <div class="gallery-counter" *ngIf="hasMultiple">{{ positionLabel }}</div>
+      <div class="gallery-zoom-hint" *ngIf="!imageLoading">
+        {{ zoomed ? 'بکشید تا جابه‌جا شوید · ضربه برای بازگشت' : 'برای بزرگ‌نمایی روی نقطه موردنظر ضربه بزنید' }}
+      </div>
+    </div>
+
+    <button type="button"
+            class="gallery-nav gallery-nav-next"
+            *ngIf="hasMultiple && !zoomed"
+            (click)="goNext(); $event.stopPropagation()"
+            aria-label="next">
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

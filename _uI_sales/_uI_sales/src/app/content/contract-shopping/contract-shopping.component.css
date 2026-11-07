@@ -1,0 +1,93 @@
+.track-page {
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.track-shell {
+  background: linear-gradient(180deg, #fff, #faf8f4);
+  border: 1px solid #ece6d9;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(62, 49, 24, 0.06);
+  padding: 24px;
+}
+
+.track-head {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ece6d9;
+}
+
+.track-title {
+  margin: 0 0 6px;
+  color: #2f2b24;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.track-title i {
+  color: #9a7c38;
+  margin-left: 8px;
+}
+
+.track-subtitle {
+  margin: 0;
+  color: #8a8375;
+  font-size: 14px;
+}
+
+.track-form-shell {
+  background: linear-gradient(180deg, #fffefb, #f6f2ea);
+  border: 1px solid #ece6d9;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.track-form-title {
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2d6bc;
+  color: #2f2b24;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.track-form .form-control {
+  border-color: #d8d0c0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.track-form .form-control:focus {
+  border-color: #bfa56a;
+  box-shadow: 0 0 0 3px rgba(184, 154, 84, 0.2);
+}
+
+.track-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+.track-submit {
+  width: auto !important;
+  min-width: 160px;
+  height: 44px !important;
+  line-height: 44px !important;
+  padding: 0 22px !important;
+  border-radius: 10px !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .track-shell {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .track-actions {
+    justify-content: stretch;
+  }
+
+  .track-submit {
+    width: 100% !important;
+  }
+}

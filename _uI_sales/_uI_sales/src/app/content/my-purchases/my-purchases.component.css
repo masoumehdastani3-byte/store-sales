@@ -1,0 +1,215 @@
+.purchases-page {
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.purchases-shell {
+  background: linear-gradient(180deg, #fff, #faf8f4);
+  border: 1px solid #ece6d9;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(62, 49, 24, 0.06);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.purchases-head {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ece6d9;
+}
+
+.purchases-title {
+  margin: 0 0 6px;
+  color: #2f2b24;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.purchases-title i {
+  color: #9a7c38;
+  margin-left: 8px;
+}
+
+.purchases-subtitle {
+  margin: 0;
+  color: #8a8375;
+  font-size: 14px;
+}
+
+.purchases-table-wrap {
+  overflow-x: auto;
+}
+
+.purchases-table {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #eee7da;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.purchases-table thead th {
+  background: linear-gradient(180deg, #f7f1e3, #efe6d2);
+  color: #5c574e;
+  border-color: #e2d6bc !important;
+  font-weight: 700;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.purchases-table td {
+  border-color: #f0ece4 !important;
+  vertical-align: middle;
+  color: #3a372f;
+}
+
+.purchases-row:hover td {
+  background: #faf8f4;
+}
+
+.purchases-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f7f1e3;
+  border: 1px solid #e2d6bc;
+  color: #7b6330;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.purchases-total-row td {
+  background: #f7f1e3 !important;
+  color: #6b5d2e;
+  font-size: 15px;
+  border-top: 1px solid #e2d6bc !important;
+}
+
+.purchases-total-label {
+  float: left;
+  font-weight: 700;
+}
+
+.purchases-total-value {
+  font-size: 1.15rem;
+  color: #8c7134;
+}
+
+.purchases-empty {
+  padding: 28px 12px;
+  text-align: center;
+  color: #8a8375;
+  background: #fff;
+  border: 1px dashed #e2d6bc;
+  border-radius: 12px;
+}
+
+.purchases-page-generator {
+  margin-top: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+  .purchases-shell {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .purchases-table,
+  .purchases-table thead,
+  .purchases-table tbody,
+  .purchases-table th,
+  .purchases-table tr,
+  .purchases-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .purchases-table thead {
+    display: none;
+  }
+
+  .purchases-table {
+    border: none;
+    background: transparent;
+  }
+
+  .purchases-row {
+    background: #fff;
+    border: 1px solid #eee7da;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(58, 43, 20, 0.05);
+    margin-bottom: 14px;
+    padding: 4px 0;
+    overflow: hidden;
+  }
+
+  .purchases-row td {
+    position: relative;
+    text-align: left !important;
+    padding: 12px 14px !important;
+    padding-right: 120px !important;
+    border: none !important;
+    border-bottom: 1px solid #f0ece4 !important;
+    min-height: 44px;
+  }
+
+  .purchases-row td:last-child {
+    border-bottom: none !important;
+  }
+
+  .purchases-row td:first-child {
+    background: linear-gradient(180deg, #f7f1e3, #efe6d2);
+    font-weight: 700;
+  }
+
+  .purchases-row td:before {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 700;
+    color: #906f25;
+  }
+
+  .purchases-row td:nth-of-type(1):before { content: "شناسه خرید"; }
+  .purchases-row td:nth-of-type(2):before { content: "تاریخ"; }
+  .purchases-row td:nth-of-type(3):before { content: "نام کالا"; }
+  .purchases-row td:nth-of-type(4):before { content: "تعداد"; }
+  .purchases-row td:nth-of-type(5):before { content: "قیمت واحد"; }
+  .purchases-row td:nth-of-type(6):before { content: "تخفیف"; }
+  .purchases-row td:nth-of-type(7):before { content: "جمع کل"; }
+  .purchases-row td:nth-of-type(8):before { content: "وضعیت"; }
+
+  .purchases-total-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background: #f7f1e3;
+    border: 1px solid #e2d6bc;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-top: 4px;
+  }
+
+  .purchases-total-row td {
+    display: inline-block;
+    width: auto;
+    background: transparent !important;
+    border: none !important;
+    padding: 4px 6px !important;
+  }
+
+  .purchases-total-row td:first-child {
+    flex: 1 1 100%;
+    text-align: right !important;
+  }
+
+  .purchases-total-label {
+    float: none;
+  }
+}

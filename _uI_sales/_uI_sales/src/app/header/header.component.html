@@ -1,0 +1,142 @@
+<div class="row" [ngStyle]="{'color': them.ButtonFontColor,'background-color':them.ButtonColor}">
+  <div class="col-md-12" >
+    <!--PageGenerator_5--->
+    <div id="PageGenerator_5"  style="padding-top:12px">
+
+    </div>
+  </div>
+</div>
+
+
+<div class="header_bar bar-pc row" [ngStyle]="{'color': them.HeaderFontColor,'background-color':them.HeaderColor}">
+
+
+  <div class="info" *ngIf="service.Company!=undefined">
+    <div class="row">
+      <div class="col-md-4 " *ngIf="service.Company.Tell!=null && service.Company.Tell!=''">
+        <img class="icon-image" src="../../assets/image/phone-call.svg" />
+        <span>{{service.Company.Tell}}</span><span>{{service.Company.Mobile}}</span>
+        
+      </div>
+
+      <div class="col-md-3 " *ngIf="service.Company.Email!=null && service.Company.Email!=''">
+        <img class="icon-image" src="../../assets/image/envelope.svg" />
+        <span>
+          {{service.Company.Email}}
+
+        </span>
+      </div>
+      <div class="col-md-5 " *ngIf="service.Company.Address!=null && service.Company.Address!=''">
+        <img class="icon-image" src="../../assets/image/placeholder.svg" />
+        <span>{{service.Company.Address}}</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="network">
+    <div class="row ">
+
+      <div class="col-md-12 ml-auto ">
+        <ul class="d-flex flex-row align-items-center justify-content-start float-left" *ngIf="service.Company!=undefined">
+          <li><a href="{{service.Company.TelegramUrl}}"><i class="far fa-telegram fa-1x" aria-hidden="true" [ngStyle]="{'color': them.ButtonFontColor,'background-color':them.ButtonColor}"></i></a></li>
+          <li><a href="{{service.Company.InstagramUrl}}"><i class="far fa-instagram fa-1x" aria-hidden="true" [ngStyle]="{'color': them.ButtonFontColor,'background-color':them.ButtonColor}"></i></a></li>
+          <li><i class="far fa-twitter fa-1x" aria-hidden="true" [ngStyle]="{'color': them.ButtonFontColor,'background-color':them.ButtonColor}"></i></li>
+          
+          <li *ngIf="service.Company.SocialNetworks1_LogUrl!=null"><a [href]="service.Company.SocialNetworks1_Url" ><i [ngStyle]="{'color': service.Company.ButtonFontColor,'background-color':service.Company.ButtonColor}" class="far fa-1x"><img src="{{them.configUrlBasicImage}}{{service.Company.SocialNetworks1_LogUrl}}" style="width: 20px;height: 20px;" aria-hidden="true" /></i></a></li>
+          <li *ngIf="service.Company.SocialNetworks2_LogUrl!=null"><a [href]="service.Company.SocialNetworks2_Url"><i [ngStyle]="{'color': service.Company.ButtonFontColor,'background-color':service.Company.ButtonColor}" class="far fa-1x"><img src="{{them.configUrlBasicImage}}{{service.Company.SocialNetworks2_LogUrl}}" style="width: 20px;height: 20px;" aria-hidden="true" /></i></a></li>
+
+        </ul>
+
+        <!--<span class="fa-li"><i class="far fa-telegram fa-2x"></i></span>
+
+        <span><i class="far fa-instagram fa-2x"></i></span>
+        <span><i class="far fa-facebook fa-2x"></i></span>-->
+      </div>
+      <!-- <div class="col-md-5 float-left ">
+        <a [ngStyle]="{'color': them.HeaderFontColor,'background-color':them.HeaderColor}" href="{{them.configUrlPanel}}" target="_blank"><span class="far fa-arrow-left"></span><span>{{'Login' | translate}}</span></a>
+
+      </div> -->
+    </div>
+  </div>
+
+
+
+</div>
+<div class="header_bar bar-mobile row" *ngIf="service.Company!=undefined" [ngStyle]="{'color': them.HeaderFontColor,'background-color':them.HeaderColor}">
+
+  <div class="col-md-12" *ngIf="service.Company.Tell!=null && service.Company.Tell!=''">
+    <img class="icon-image" src="../../assets/image/phone-call.svg" />
+    <span>{{service.Company.Tell}}</span> - <span>{{service.Company.Mobile}}</span>
+    <!-- <a [ngStyle]="{'color': them.HeaderFontColor,'background-color':them.HeaderColor}" href="{{them.configUrlPanel}}" target="_blank"><span class="far fa-arrow-left"></span><span>{{'Login' | translate}}</span></a> -->
+  </div>
+
+</div>
+<nav class="navbar navbar-expand-lg navbar-light site-navbar background-header" [class.fixed]="fixed">
+  <img class="logo" src="{{them.LogoUrl}}" alt="" />
+  <label class="navbar-brand" *ngIf="service.Company!=undefined">{{service.Company.Name}}</label>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto menu2">
+      <li class="nav-item ">
+        <a class="nav-link menu1" routerLink="/home-page" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{'Menu.Home' | translate}}</a>
+      </li>
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+          {{'Menu.ProductList' | translate}}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu ul-margin">
+          <li class="li-margin" *ngFor="let item of service.CompanyProductGroup">
+            <a class="dropdown-item menu1" routerLink="/search-result/{{item.ID}}/0/{{item.Title}}" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}">{{item.Title}}</a>
+          </li>
+
+        </ul>
+      </li>
+      <li class="nav-item ">
+       
+        <a rel="nofollow" class="nav-link menu1" routerLink="/basket" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><span class="badge badge-danger">{{them.TotalShopping}}</span>  {{'Menu.ShoppingBasket' | translate}}</a>
+      </li>
+      <li class="nav-item ">
+        <a rel="nofollow" class="nav-link menu1" routerLink="/shopping-contract" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{'Menu.MyPurchases' | translate}}</a>
+      </li>
+
+      <li class="nav-item " *ngFor="let item of service.MenuView" [ngClass]="{'dropdown': item.subMenus.length>1}">
+
+        <a class="nav-link menu1" *ngIf="item.subMenus.length==1" routerLink="/page/{{item.subMenus[0].ID}}" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}">{{item.subMenus[0].PageTitle}}</a>
+
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" *ngIf="item.subMenus.length>1" href="#">
+          {{item.MenuTitle}}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu ul-margin">
+          <li class="li-margin" *ngFor="let item2 of item.subMenus">
+            <a class="dropdown-item menu1" routerLink="/page" routerLinkActive="active" [queryParams]="{id:item2.ID}" [routerLinkActiveOptions]="{exact:true}">{{item2.PageTitle}}</a>
+          </li>
+
+        </ul>
+
+      </li>
+      
+      
+
+    </ul>
+
+    <!--<form class="form-inline my-2 my-lg-0">
+      <label>{{'SelectingLanguage' | translate}}</label>
+      <select (change)="useLanguage($event.target.value)">
+
+        <option value="fa">
+          فارسی
+        </option>
+        <option value="en">
+          English
+        </option>
+      </select>
+
+    </form>-->
+  </div>
+</nav>

@@ -1,0 +1,63 @@
+<div class="container purchases-page">
+  <div class="purchases-shell">
+    <div class="purchases-head">
+      <div>
+        <h1 class="purchases-title">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          {{ 'Menu.MyPurchases' | translate }}
+        </h1>
+        <p class="purchases-subtitle" *ngIf="FullName">{{ FullName }}</p>
+      </div>
+    </div>
+
+    <div class="purchases-table-wrap respons" *ngIf="Purchase && Purchase.length">
+      <table class="table purchases-table">
+        <thead>
+          <tr>
+            <th scope="col">{{ 'Panel.PurchaseID' | translate }}</th>
+            <th scope="col">{{ 'Panel.Date' | translate }}</th>
+            <th scope="col">{{ 'ProductName' | translate }}</th>
+            <th scope="col">{{ 'Count' | translate }}</th>
+            <th scope="col">{{ 'UnitPrice' | translate }}</th>
+            <th scope="col">{{ 'Discount' | translate }}</th>
+            <th scope="col">{{ 'Total' | translate }}</th>
+            <th scope="col">{{ 'Status' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Purchase" class="respons-purchas purchases-row">
+            <td data-label="شناسه خرید">{{ item.ID }}</td>
+            <td data-label="تاریخ">
+              <ng-container *ngIf="Lang=='fa'">{{ item.DateShamsi }}</ng-container>
+              <ng-container *ngIf="Lang=='en'">{{ item.CreateDate }}</ng-container>
+            </td>
+            <td data-label="نام کالا">{{ item.ProducName }}</td>
+            <td data-label="تعداد">{{ item.ShoppingCount }}</td>
+            <td data-label="قیمت واحد">{{ them.parseNumber(item.UnitPrice) }}</td>
+            <td data-label="تخفیف">{{ them.parseNumber(item.TotalUnitDisount) }}</td>
+            <td data-label="جمع کل">{{ them.parseNumber((item.UnitPrice * item.ShoppingCount) - item.TotalUnitDisount) }}</td>
+            <td data-label="وضعیت">
+              <span class="purchases-status">{{ item.StatusName }}</span>
+            </td>
+          </tr>
+          <tr class="purchases-total-row">
+            <td colspan="6">
+              <span class="purchases-total-label">{{ 'Total' | translate }}</span>
+            </td>
+            <td>
+              <strong class="purchases-total-value">{{ them.parseNumber(Total) }}</strong>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="purchases-empty" *ngIf="!Purchase || !Purchase.length">
+      سفارشی برای نمایش یافت نشد.
+    </div>
+  </div>
+
+  <!--PageGenerator_6--->
+  <div id="PageGenerator_6" class="purchases-page-generator"></div>
+</div>

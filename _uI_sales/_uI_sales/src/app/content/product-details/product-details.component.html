@@ -1,0 +1,249 @@
+<div class="container pd-page" *ngIf="ProductDetails[0] != undefined">
+
+  <article class="pd-shell">
+    <div class="pd-grid">
+
+      <!-- Gallery + buy -->
+      <section class="pd-gallery">
+        <app-image-viewer [Product]="ProductDetails[0]"></app-image-viewer>
+
+        <div class="pd-buy-card">
+          <div class="pd-price-block">
+            <div class="pd-price-old" *ngIf="ProductDetails[0].DiscountPrice > 0" [ngClass]="{'discountPrice': ProductDetails[0].DiscountPrice > 0}">
+              {{ ProductDetails[0].PriceSales | number:'4.0-0' }}
+              <small>{{ ProductDetails[0].CourrencyName }}</small>
+            </div>
+            <div class="pd-price-main price-text-color">
+              <ng-container *ngIf="ProductDetails[0].DiscountPrice > 0; else fullPrice">
+                {{ ProductDetails[0].PriceSales - ProductDetails[0].DiscountPrice | number:'4.0-0' }}
+              </ng-container>
+              <ng-template #fullPrice>
+                {{ ProductDetails[0].PriceSales | number:'4.0-0' }}
+              </ng-template>
+              <small>{{ ProductDetails[0].CourrencyName }}</small>
+            </div>
+            <span class="pd-discount-badge" *ngIf="ProductDetails[0].DiscountPrice > 0">
+              {{ 'Discount' | translate }} %{{ ProductDetails[0].OffPercent }}
+            </span>
+          </div>
+
+          <div class="pd-rating" *ngIf="ProductDetails[0].Grad">
+            <i class="fa fa-star" *ngIf="ProductDetails[0].Grad >= 1"></i>
+            <i class="fa fa-star" *ngIf="ProductDetails[0].Grad >= 2"></i>
+            <i class="fa fa-star" *ngIf="ProductDetails[0].Grad >= 3"></i>
+            <i class="fa fa-star" *ngIf="ProductDetails[0].Grad >= 4"></i>
+            <i class="fa fa-star" *ngIf="ProductDetails[0].Grad >= 5"></i>
+          </div>
+
+          <div class="pd-buy-actions">
+            <button type="button"
+                    class="pd-btn pd-cart-btn"
+                    (click)="onSelectProductOrder(ProductDetails[0].ID)"
+                    *ngIf="ProductDetails[0].IsAvailable===true">
+              <i class="fa fa-shopping-cart"></i> {{ 'Add' | translate }}
+            </button>
+            <button type="button"
+                    class="pd-btn pd-cart-btn"
+                    disabled
+                    *ngIf="ProductDetails[0].IsAvailable===false">
+              {{ 'NotAvailable' | translate }}
+            </button>
+
+            <button type="button"
+                    class="pd-btn pd-back-btn"
+                    (click)="backToList()">
+              <i class="fa fa-arrow-right"></i> {{ 'BackToList' | translate }}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product info -->
+      <section class="pd-info">
+        <p class="pd-group" *ngIf="ProductDetails[0].ProductGroup_Title">
+          {{ ProductDetails[0].ProductGroup_Title }}
+        </p>
+        <h1 class="pd-title">{{ ProductDetails[0].Name }}</h1>
+
+        <div class="pd-meta">
+          <span class="pd-meta-item" *ngIf="ProductDetails[0].VisitedCount != null">
+            <i class="fa fa-eye"></i> {{ ProductDetails[0].VisitedCount }}
+          </span>
+          <span class="pd-meta-item" *ngIf="ProductDetails[0].Grad != null">
+            <i class="fa fa-star"></i> {{ ProductDetails[0].Grad }}
+          </span>
+          <span class="pd-availability" [class.is-available]="ProductDetails[0].IsAvailable===true" [class.is-unavailable]="ProductDetails[0].IsAvailable===false">
+            {{ (ProductDetails[0].IsAvailable===true ? 'Panel.IsAvailable' : 'NotAvailable') | translate }}
+          </span>
+        </div>
+
+        <div class="pd-section" *ngIf="ProductDetails[0].ProductDetails && ProductDetails[0].ProductDetails.length">
+          <h2 class="pd-section-title">{{ 'Specification' | translate }}</h2>
+          <div class="pd-specs">
+            <div class="pd-spec-row" *ngFor="let row of ProductDetails[0].ProductDetails">
+              <span class="pd-spec-label">{{ row.GroupTypeName }}</span>
+              <span class="pd-spec-value">{{ row.Title }}</span>
+            </div>
+            <div class="pd-spec-row" *ngIf="ProductDetails[0].BarCode">
+              <span class="pd-spec-label">{{ 'BarCode' | translate }}</span>
+              <span class="pd-spec-value">{{ ProductDetails[0].BarCode }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pd-section" *ngIf="ProductDetails[0].ProductDescription">
+          <h2 class="pd-section-title">{{ 'Panel.Description' | translate }}</h2>
+          <p class="pd-description">{{ ProductDetails[0].ProductDescription }}</p>
+        </div>
+      </section>
+    </div>
+  </article>
+
+  <!-- Similar products -->
+  <section class="pd-related" *ngIf="productService.ProductSearch.length > 0">
+    <div class="pd-related-shell">
+      <div class="pd-related-head">
+        <div>
+          <h2 class="pd-related-title">{{ 'SameProduct' | translate }}</h2>
+          <p class="pd-related-subtitle">محصولاتی نزدیک به انتخاب شما را ببینید.</p>
+        </div>
+        <div class="pd-related-nav">
+          <button class="pd-related-nav-btn" type="button" (click)="scrollRelated(relatedList, -1)" aria-label="قبلی">
+            <i class="fa fa-chevron-right"></i>
+          </button>
+          <button class="pd-related-nav-btn" type="button" (click)="scrollRelated(relatedList, 1)" aria-label="بعدی">
+            <i class="fa fa-chevron-left"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="pd-related-track" #relatedList>
+        <article class="pd-related-card" *ngFor="let item of productService.ProductSearch">
+          <a class="pd-related-card-link" routerLink="/p/{{item.ID}}/">
+            <div class="pd-related-media">
+              <video controls *ngIf="item.Image_Url && item.Image_Url.includes('.mp4')" class="pd-related-image" poster="{{item.DefaultImageVideo}}">
+                <source src="{{them.configUrlBasicImage}}{{item.Image_Url}}" type="video/mp4">
+              </video>
+              <img *ngIf="!item.Image_Url || !item.Image_Url.includes('.mp4')"
+                   appImgLoad
+                   [src]="them.getDisplayImageUrl(item.Image_Url, item)"
+                   (error)="them.onSmallImageError($event, item.Image_Url, item)"
+                   alt="{{item.Name}}"
+                   class="pd-related-image"
+                   loading="lazy">
+              <span class="pd-related-discount" *ngIf="item.DiscountPrice > 0">%{{item.OffPercent}} {{'Discount' | translate}}</span>
+              <img *ngIf="item.AvailableCount == 0" src="/assets/image/Sold.png" class="Sold" alt="" />
+            </div>
+          </a>
+
+          <div class="pd-related-body">
+            <a class="pd-related-name" routerLink="/p/{{item.ID}}/">{{ item.Name }}</a>
+
+            <div class="pd-related-rating" *ngIf="item.Grad">
+              <i class="price-text-color fa fa-star" *ngIf="item.Grad >= 1"></i>
+              <i class="price-text-color fa fa-star" *ngIf="item.Grad >= 2"></i>
+              <i class="price-text-color fa fa-star" *ngIf="item.Grad >= 3"></i>
+              <i class="price-text-color fa fa-star" *ngIf="item.Grad >= 4"></i>
+              <i class="price-text-color fa fa-star" *ngIf="item.Grad >= 5"></i>
+            </div>
+
+            <div class="pd-related-price">
+              <div class="pd-related-price-old price-text-color" *ngIf="item.DiscountPrice > 0" [ngClass]="{'discountPrice': item.DiscountPrice > 0}">
+                {{ item.PriceSales | number:'4.0-0' }} {{ item.CourrencyName }}
+              </div>
+              <div class="pd-related-price-main price-text-color" *ngIf="item.DiscountPrice > 0">
+                {{ item.PriceSales - item.DiscountPrice | number:'4.0-0' }} {{ item.CourrencyName }}
+              </div>
+              <div class="pd-related-price-main price-text-color" *ngIf="!(item.DiscountPrice > 0)">
+                {{ item.PriceSales | number:'4.0-0' }} {{ item.CourrencyName }}
+              </div>
+            </div>
+
+            <div class="pd-related-actions">
+              <button type="button"
+                      class="btn_offer pd-related-btn"
+                      [ngStyle]="{'color': them.ButtonFontColor, 'background-color': them.ButtonColor}"
+                      (click)="onSelectProductOrder(item.ID)"
+                      *ngIf="item.IsAvailable === true">
+                <i class="fa fa-shopping-cart"></i> {{ 'Add' | translate }}
+              </button>
+              <button type="button"
+                      class="btn_offer pd-related-btn"
+                      disabled
+                      [ngStyle]="{'color': them.ButtonFontColor, 'background-color': them.ButtonColor}"
+                      *ngIf="item.IsAvailable === false">
+                {{ 'NotAvailable' | translate }}
+              </button>
+              <a class="btn_price pd-related-btn themed-details-btn" routerLink="/p/{{item.ID}}/">
+                <i class="fa fa-list"></i> {{ 'MoreDeails' | translate }}
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comments -->
+  <section class="pd-comments card">
+    <h2 class="card-header pd-comments-title">
+      <i class="fa fa-comment" aria-hidden="true"></i> {{ 'UserComments' | translate }}
+    </h2>
+    <nav class="m-3">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-insert-comment-tab" data-toggle="tab" href="#insert-comment" role="tab" aria-controls="nav-home" aria-selected="true">{{ 'SubmitAComment' | translate }}</a>
+        <a class="nav-item nav-link" id="nav-view-tab" data-toggle="tab" href="#view-comment" role="tab" aria-controls="nav-profile" aria-selected="false">{{ 'OtherUsersComments' | translate }}</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="insert-comment" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="card-body">
+          <form [formGroup]="UserComment" class="pd-comment-form">
+            <div class="form-group row">
+              <label for="staticFullName" class="col-sm-2 col-form-label">{{ 'FullName' | translate }}</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" id="staticFullName" placeholder="" formControlName="FullName" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="Description" class="col-sm-2 col-form-label">
+                {{ 'Panel.Description' | translate }}
+                <samp class="pd-required">({{ 'Panel.required' | translate }})</samp>
+              </label>
+              <div class="col-sm-10">
+                <textarea class="form-control" id="Description" placeholder="{{ 'Panel.Description' | translate }}" formControlName="Description" maxlength="500"></textarea>
+                <samp *ngIf="isSubmittedComment && formControlsUserComment.Description.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+              </div>
+            </div>
+            <div class="pd-comment-actions">
+              <button type="button" class="btn_price" [ngStyle]="{'color': them.PriceFontColor, 'background-color': them.PriceColor}" (click)="SaveUserComment()">{{ 'Submit' | translate }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="view-comment" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="panel-body">
+          <ul class="media-list m-3 pd-comment-list">
+            <li class="media pd-comment-item" *ngFor="let item of productService.ProductUserComment">
+              <div class="pd-comment-avatar" aria-hidden="true">{{ (item.FullName || '?').charAt(0) }}</div>
+              <div class="media-body">
+                <div class="pd-comment-head">
+                  <strong class="text-success">{{ item.FullName }}</strong>
+                  <small class="text-muted">{{ item.Date_Shamsi }}</small>
+                </div>
+                <p>{{ item.Description }}</p>
+              </div>
+            </li>
+          </ul>
+          <p class="text-muted m-3" *ngIf="!productService.ProductUserComment || !productService.ProductUserComment.length">
+            —
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="pd-tags" *ngIf="ProductDetails[0].InstagramTag">
+    {{ ProductDetails[0].InstagramTag }}
+  </p>
+</div>

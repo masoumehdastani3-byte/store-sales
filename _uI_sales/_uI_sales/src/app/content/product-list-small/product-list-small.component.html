@@ -1,0 +1,36 @@
+<!--نمایش افقی محصولات-->
+<div class="pls-track">
+  <article class="pls-card" *ngFor="let item of products" id="W{{item.ID}}">
+    <a class="pls-media" routerLink="/p/{{item.ID}}/{{IsHomePage==true?'home':''}}">
+      <video controls *ngIf="item.Image_Url && item.Image_Url.includes('.mp4')" class="pls-image" poster="{{item.DefaultImageVideo}}">
+        <source src="{{them.configUrlBasicImage}}{{item.Image_Url}}" type="video/mp4">
+      </video>
+      <img *ngIf="!item.Image_Url || !item.Image_Url.includes('.mp4')"
+           appImgLoad
+           [src]="them.getDisplayImageUrl(item.Image_Url, item)"
+           (error)="them.onSmallImageError($event, item.Image_Url, item)"
+           alt="{{item.Name}}"
+           class="pls-image"
+           loading="lazy">
+      <span class="pls-discount" *ngIf="item.IsOffPercent > 0 || item.DiscountPrice > 0">
+        {{ item.OffPercent }}%
+      </span>
+      <img *ngIf="item.AvailableCount == 0" src="/assets/image/Sold.png" class="Sold" alt="" />
+    </a>
+
+    <div class="pls-body">
+      <a class="pls-name" routerLink="/p/{{item.ID}}/{{IsHomePage==true?'home':''}}">{{ item.Name }}</a>
+      <div class="pls-price">
+        <div class="pls-price-old price-text-color" *ngIf="item.DiscountPrice > 0" [ngClass]="{'discountPrice': item.DiscountPrice > 0}">
+          {{ item.PriceSales | number:'4.0-0' }} {{ item.CourrencyName }}
+        </div>
+        <div class="pls-price-main price-text-color" *ngIf="item.DiscountPrice > 0">
+          {{ item.PriceSales - item.DiscountPrice | number:'4.0-0' }} {{ item.CourrencyName }}
+        </div>
+        <div class="pls-price-main price-text-color" *ngIf="!(item.DiscountPrice > 0)">
+          {{ item.PriceSales | number:'4.0-0' }} {{ item.CourrencyName }}
+        </div>
+      </div>
+    </div>
+  </article>
+</div>

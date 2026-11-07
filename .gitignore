@@ -1,0 +1,107 @@
+# =========================
+# .NET / Visual Studio
+# =========================
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+packages/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.sln.docstates
+*.cache
+*.pdb
+*.dll
+*.exe
+!**/Properties/AssemblyInfo.cs
+.vs/
+*.ncrunch*
+_ReSharper*/
+*.DotSettings.user
+TestResults/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/PublishProfiles/*.pubxml.user
+
+# =========================
+# Node / Angular
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+out-tsc/
+.angular/
+.sass-cache/
+coverage/
+libpeerconnection.log
+testem.log
+typings/
+bazel-out/
+connect.lock
+*.tsbuildinfo
+
+# =========================
+# IDE & editors
+# =========================
+.idea/
+*.swp
+*.swo
+.history/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# =========================
+# Environment & secrets
+# =========================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+
+# =========================
+# Uploads & runtime data
+# =========================
+**/FileUploads/
+**/fileuploads/
+
+# =========================
+# SQL Server database files
+# =========================
+*.mdf
+*.ldf
+*.bak
+*.ndf
+
+# =========================
+# Build / publish output
+# =========================
+**/app.publish/
+*.Publish.xml
+
+# =========================
+# Local screenshots (not part of source)
+# =========================
+/Screenshot*.png

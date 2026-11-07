@@ -1,0 +1,26 @@
+<div class="iv-wrap">
+  <div class="iv-main">
+    <app-image-gallery [(src)]="Product.Image_Url" [alt]="Product.Name" [images]="Product.ProductImage"></app-image-gallery>
+
+    <video controls
+           *ngIf="Product.Image_Url && Product.Image_Url.toLowerCase().includes('.mp4')"
+           class="video-details iv-video"
+           poster="{{Product.DefaultImageVideo}}">
+      <source src="{{them.configUrlBasicImage}}{{Product.Image_Url}}" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="iv-thumbs" *ngIf="Product.ProductImage && Product.ProductImage.length">
+    <button type="button"
+            class="iv-thumb"
+            *ngFor="let img of Product.ProductImage"
+            [class.is-active]="Product.Image_Url === img.Image_Url"
+            (click)="Product.Image_Url = img.Image_Url">
+      <img appImgLoad
+           [src]="!img.Image_Url.toLowerCase().includes('.mp4') ? them.getDisplayImageUrl(img.Image_Url, img) : Product.DefaultImageVideo"
+           (error)="them.onSmallImageError($event, img.Image_Url, img)"
+           [alt]="img.Description || Product.Name"
+           loading="lazy">
+    </button>
+  </div>
+</div>

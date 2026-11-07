@@ -1,0 +1,58 @@
+<!--Footer-->
+<div class="footer_content site-footer">
+
+  <div class="container">
+    <div class="row footer-grid">
+      <div class="col-md-4 footer-col" *ngIf="service.Company!=undefined">
+        <ul class="footer-list">
+          <li class="footer-title">
+            <span>{{'CompanyInfo' | translate}}</span>
+          </li>
+          <li *ngIf="service.Company.Tell!=null && service.Company.Tell!=''">
+            <img class="icon-image" src="../../assets/image/phone-call.svg" alt="" />
+            <span>{{service.Company.Tell}}</span>
+          </li>
+          <li *ngIf="service.Company.Mobile!=null && service.Company.Mobile!=''">
+            <img class="icon-image" src="../../assets/image/phone-call.svg" alt="" />
+            <span>{{service.Company.Mobile}}</span>
+          </li>
+          <li *ngIf="service.Company.Address!=null && service.Company.Address!=''">
+            <img class="icon-image" src="../../assets/image/placeholder.svg" alt="" />
+            <span>{{service.Company.Address}}</span>
+          </li>
+          <li *ngIf="service.Company.Email!=null && service.Company.Email!=''">
+            <img class="icon-image" src="../../assets/image/envelope.svg" alt="" />
+            <span>{{service.Company.Email}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-col">
+        <!--PageGenerator_4--->
+        <div id="PageGenerator_4"></div>
+      </div>
+      <div class="col-md-4 footer-col footer-badges">
+        <div class="footer-namad" id="Namd1">
+          <a referrerpolicy="origin" target="_blank" rel="noopener"
+             href="https://trustseal.enamad.ir/?id=210334&Code=9tkmP7zSTaBzUgYHTifD">
+            <img referrerpolicy="origin"
+                 src="https://trustseal.enamad.ir/logo.aspx?id=210334&Code=9tkmP7zSTaBzUgYHTifD"
+                 alt="نماد اعتماد الکترونیکی"
+                 style="cursor:pointer"
+                 id="9tkmP7zSTaBzUgYHTifD">
+          </a>
+        </div>
+        <div class="footer-namad" id="Namd2"></div>
+        <div class="footer-namad" id="Namd3"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="row footer-company">
+  <div class="col-md-12 text-center">
+    <a href="https://www.nikoooo.ir">
+      <img src="../../assets/image/logo.png" width="40" alt="" />
+      طراحی و پیاده سازی توسط شرکت نیکو سیستم آفرین
+    </a>
+  </div>
+</div>

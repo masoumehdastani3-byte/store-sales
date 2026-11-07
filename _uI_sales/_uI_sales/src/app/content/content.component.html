@@ -1,0 +1,28 @@
+
+<app-header > </app-header>
+
+<router-outlet>
+
+</router-outlet>
+
+<div class="whatsup " *ngIf="service.Company!=null">
+  
+  <a class="tooltip1" [href]="whatsappURL()" target="_blank" tooltip="گفتگو در واتساپ">
+    <img src="../../assets/image/whatsapp.png">
+    <span class="tooltiptext">گفتگو در واتساپ </span>
+  </a>
+ 
+  </div>
+
+<app-footer ></app-footer>
+
+<div *ngIf="them.loading !=undefined">
+  <img class="loader" src="../../assets/loader.gif" *ngIf="them.loading" />
+</div>
+
+
+
+
+
+
+

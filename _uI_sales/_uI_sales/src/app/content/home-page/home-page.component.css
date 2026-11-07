@@ -1,0 +1,420 @@
+.main-search {
+    /*background-image: url('~/assets/image/home.jpg');*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    
+}
+.pading{
+    padding-top:200px;
+}
+@media only screen and (max-width: 800px) {
+    .pading{
+        padding-right:80px;
+        padding-left: 120px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .main-search {
+        height: 100%;
+    }
+}
+
+.search {
+    background: transparent;
+    z-index: 1;
+}
+.search_title {
+    display: inline-block;
+    height: 60px;
+    background: linear-gradient(180deg, #b89a54, #9a7c38);
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff8ea;
+    padding-left: 23px;
+    line-height: 70px;
+    padding-right: 26px;
+    border-radius: 12px 12px 0 0;
+}
+@media only screen and (max-width: 575px) {
+  .search_title {
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+    min-width: 230px;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.home-section {
+    margin-top: 34px;
+}
+
+.home-section-shell {
+    background: linear-gradient(180deg, #fff, #faf8f4);
+    border: 1px solid #ece6d9;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(62, 49, 24, 0.06);
+    padding: 24px;
+}
+
+.home-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.home-section-title {
+    margin: 0 0 6px;
+    color: #2f2b24;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.home-section-subtitle {
+    margin: 0;
+    color: #8a8375;
+    font-size: 14px;
+}
+
+.special-offer-head {
+    margin-bottom: 16px;
+}
+
+.layout-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.layout-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #d8d0c0;
+    background: #fff;
+    color: #7b6330;
+    border-radius: 999px;
+    min-height: 34px;
+    padding: 0 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    box-shadow: 0 2px 8px rgba(90, 70, 30, 0.05);
+}
+
+.layout-chip:hover {
+    background: #f7f1e3;
+    border-color: #bfa56a;
+    color: #6b5628;
+}
+
+.layout-chip.is-active {
+    background: linear-gradient(180deg, #c7aa60, #9a7c38);
+    border-color: #8c7134;
+    color: #fff8ea;
+    box-shadow: 0 6px 14px rgba(110, 84, 29, 0.16);
+}
+
+.special-offer-horizontal {
+    background: transparent;
+}
+
+.home-quick-search app-easy-search {
+    display: block;
+}
+
+.group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+}
+
+.group-card {
+    display: block;
+    text-decoration: none;
+    color: #2f2b24;
+    background: linear-gradient(180deg, #fffefb, #f6f2ea);
+    border: 1px solid #ece3d1;
+    border-radius: 14px;
+    padding: 22px 18px;
+    text-align: center;
+    box-shadow: 0 8px 18px rgba(58, 43, 20, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.group-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(58, 43, 20, 0.10);
+    border-color: #cdb47c;
+    text-decoration: none;
+}
+
+.group-card-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1eadb;
+    color: #9a8243;
+    font-size: 20px;
+}
+
+.group-card h5 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.7;
+}
+
+.group-card-link {
+    display: inline-block;
+    color: #9a8243;
+    font-size: 13px;
+}
+
+.newest-products-section {
+    margin-top: 40px;
+}
+
+.newest-products-shell {
+    background: linear-gradient(180deg, #fff, #faf8f4);
+    border: 1px solid #ece6d9;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(62, 49, 24, 0.06);
+    padding: 24px;
+}
+
+.newest-products-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.newest-products-title {
+    margin: 0 0 6px;
+    color: #2f2b24;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.newest-products-subtitle {
+    margin: 0;
+    color: #8a8375;
+    font-size: 14px;
+}
+
+.newest-products-nav {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.newest-nav-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #d8d0c0;
+    border-radius: 50%;
+    background: #fff;
+    color: #89743f;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.newest-nav-btn:hover {
+    background: #f7f1e3;
+    border-color: #bfa56a;
+}
+
+.newest-products-track {
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 6px 2px 10px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.newest-card {
+    flex: 0 0 280px;
+    background: #fff;
+    border: 1px solid #eee7da;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(58, 43, 20, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.newest-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(58, 43, 20, 0.10);
+}
+
+.newest-card-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.newest-card-media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    background: linear-gradient(180deg, #fcfbf8, #f0ebe1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.newest-card-image {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+.newest-discount-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #c8a627;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.newest-barcode {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #666;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+}
+
+.newest-card-body {
+    padding: 14px 14px 16px;
+}
+
+.newest-card-name {
+    display: block;
+    min-height: 44px;
+    color: #29261f;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.6;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.newest-card-rating {
+    min-height: 24px;
+    margin-bottom: 10px;
+}
+
+.newest-card-price {
+    min-height: 54px;
+    margin-bottom: 14px;
+}
+
+.newest-price-old {
+    font-size: 13px;
+    color: #8d8679;
+}
+
+.newest-price-main {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.newest-card-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.newest-btn {
+    flex: 1 1 0;
+    width: auto !important;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px !important;
+    white-space: nowrap;
+    padding: 0 6px !important;
+}
+
+.newest-products-track::-webkit-scrollbar {
+    height: 8px;
+}
+
+.newest-products-track::-webkit-scrollbar-thumb {
+    background: #d2c6ad;
+    border-radius: 999px;
+}
+
+@media only screen and (max-width: 767px) {
+    .home-section-shell {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .home-section-title {
+        font-size: 24px;
+    }
+
+    .newest-products-shell {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .newest-products-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .newest-products-title {
+        font-size: 24px;
+    }
+
+    .newest-card {
+        flex-basis: 240px;
+    }
+
+    .newest-card-media {
+        aspect-ratio: 1 / 1;
+        height: auto;
+    }
+}
+

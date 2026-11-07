@@ -1,0 +1,307 @@
+.basket-page {
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.basket-shell {
+  background: linear-gradient(180deg, #fff, #faf8f4);
+  border: 1px solid #ece6d9;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(62, 49, 24, 0.06);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.basket-head {
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ece6d9;
+}
+
+.basket-title {
+  margin: 0 0 6px;
+  color: #2f2b24;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.basket-title i {
+  color: #9a7c38;
+  margin-left: 8px;
+}
+
+.basket-subtitle {
+  margin: 0;
+  color: #8a8375;
+  font-size: 14px;
+}
+
+.basket-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+
+.basket-table {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 15px;
+  background: #fff;
+  border: 1px solid #eee7da;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.basket-table thead th {
+  background: linear-gradient(180deg, #f7f1e3, #efe6d2);
+  color: #5c574e;
+  border-color: #e2d6bc !important;
+  font-weight: 700;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.basket-table td {
+  border-color: #f0ece4 !important;
+  vertical-align: middle;
+  color: #3a372f;
+}
+
+.basket-row:hover td {
+  background: #faf8f4;
+}
+
+.basket-product-link {
+  color: #8c7134;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.basket-product-link:hover {
+  color: #6b5628;
+  text-decoration: underline;
+}
+
+.basket-delete-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #e2d0c8;
+  border-radius: 8px;
+  background: #fff;
+  color: #a05a4a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.basket-delete-btn:hover {
+  background: #f8ecec;
+  border-color: #d4a8a0;
+}
+
+.basket-total-row td {
+  background: #f7f1e3 !important;
+  color: #6b5d2e;
+  font-size: 16px;
+  border-top: 1px solid #e2d6bc !important;
+}
+
+.basket-total-label {
+  float: left;
+  font-weight: 700;
+}
+
+.basket-total-value {
+  font-size: 1.2rem;
+  color: #8c7134;
+}
+
+.basket-form-shell {
+  background: linear-gradient(180deg, #fffefb, #f6f2ea);
+  border: 1px solid #ece6d9;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.basket-form-title {
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2d6bc;
+  color: #2f2b24;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.basket-form .form-control {
+  border-color: #d8d0c0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.basket-form .form-control:focus {
+  border-color: #bfa56a;
+  box-shadow: 0 0 0 3px rgba(184, 154, 84, 0.2);
+}
+
+.basket-required {
+  font-size: 11px;
+  color: #8a8375;
+}
+
+.basket-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+.basket-submit {
+  width: auto !important;
+  min-width: 180px;
+  height: 44px !important;
+  line-height: 44px !important;
+  padding: 0 22px !important;
+  border-radius: 10px !important;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.basket-submit-iranzamin {
+  color: #7a6a4a !important;
+  background-color: #f3ebe0 !important;
+  border-color: #e2d5c4 !important;
+}
+
+.basket-submit-iranzamin:hover {
+  background-color: #ebe0d0 !important;
+  border-color: #d6c7b3 !important;
+}
+
+.basket-submit-saderat {
+  color: #7a6a4a !important;
+  background-color: #f3ebe0 !important;
+  border-color: #e2d5c4 !important;
+}
+
+.basket-submit-saderat:hover {
+  background-color: #ebe0d0 !important;
+  border-color: #d6c7b3 !important;
+}
+
+.basket-page-generator {
+  margin-top: 16px;
+}
+
+/* Mobile card/slide rows */
+@media only screen and (max-width: 768px) {
+  .basket-shell {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .basket-table,
+  .basket-table thead,
+  .basket-table tbody,
+  .basket-table th,
+  .basket-table tr,
+  .basket-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .basket-table thead {
+    display: none;
+  }
+
+  .basket-table {
+    border: none;
+    background: transparent;
+  }
+
+  .basket-row {
+    background: #fff;
+    border: 1px solid #eee7da;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(58, 43, 20, 0.05);
+    margin-bottom: 14px;
+    padding: 8px 0;
+    overflow: hidden;
+  }
+
+  .basket-row td {
+    position: relative;
+    text-align: left !important;
+    padding: 12px 14px 12px 14px !important;
+    padding-right: 110px !important;
+    border: none !important;
+    border-bottom: 1px solid #f0ece4 !important;
+    min-height: 44px;
+  }
+
+  .basket-row td:last-child {
+    border-bottom: none !important;
+  }
+
+  .basket-row td:first-child {
+    background: linear-gradient(180deg, #f7f1e3, #efe6d2);
+    font-weight: 700;
+  }
+
+  .basket-row td:before {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 700;
+    color: #906f25;
+  }
+
+  .basket-row td:nth-of-type(1):before { content: "نام کالا"; }
+  .basket-row td:nth-of-type(2):before { content: "تعداد"; }
+  .basket-row td:nth-of-type(3):before { content: "قیمت واحد"; }
+  .basket-row td:nth-of-type(4):before { content: "تخفیف"; }
+  .basket-row td:nth-of-type(5):before { content: "جمع کل"; }
+  .basket-row td:nth-of-type(6):before { content: "حذف"; }
+
+  .basket-total-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background: #f7f1e3;
+    border: 1px solid #e2d6bc;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-top: 4px;
+  }
+
+  .basket-total-row td {
+    display: inline-block;
+    width: auto;
+    background: transparent !important;
+    border: none !important;
+    padding: 4px 6px !important;
+  }
+
+  .basket-total-row td:first-child {
+    flex: 1 1 100%;
+    text-align: right !important;
+  }
+
+  .basket-total-label {
+    float: none;
+  }
+
+  .basket-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .basket-submit {
+    width: 100% !important;
+    min-width: 0;
+  }
+}

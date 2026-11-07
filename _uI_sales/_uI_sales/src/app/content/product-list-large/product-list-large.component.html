@@ -1,0 +1,122 @@
+<!--مقایسه محصول-->
+<section class="compare-shell" *ngIf="ComparisonProduct.length > 0">
+  <div class="compare-head">
+    <div>
+      <h5 class="compare-title">مقایسه محصول</h5>
+      <p class="compare-subtitle">{{ ComparisonProduct.length }} کالا برای مقایسه انتخاب شده است.</p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <article class="compare-card" *ngFor="let item of ComparisonProduct">
+      <div class="compare-card-media">
+        <app-image-viewer [Product]="item"></app-image-viewer>
+      </div>
+      <div class="compare-card-body">
+        <h6 class="compare-card-name">{{ item.Name }}</h6>
+        <p class="compare-card-barcode" *ngIf="item.BarCode">{{ item.BarCode }}</p>
+        <div class="compare-card-specs" *ngIf="item.SumerySpecification">{{ item.SumerySpecification }}</div>
+        <div class="compare-card-price price-text-color" *ngIf="item.DiscountPrice > 0">
+          {{ item.PriceSales - item.DiscountPrice | number:'4.0-0' }} {{ item.CourrencyName }}
+        </div>
+        <div class="compare-card-price price-text-color" *ngIf="!(item.DiscountPrice > 0)">
+          {{ item.PriceSales | number:'4.0-0' }} {{ item.CourrencyName }}
+        </div>
+        <button type="button" class="compare-remove-btn" (click)="item.Comparison = false; onSelectCompar()">
+          حذف از مقایسه
+        </button>
+      </div>
+    </article>
+  </div>
+</section>
+<!--لیست محصول-->
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-4 bootstrap snippets bootdeys product-card-col" *ngFor="let item of products" id="W{{item.ID}}">
+      <!-- product -->
+      <div class="product-content product-wrap clearfix product-card-large">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="product-image product-card-media">
+              <!--Image-->
+              <video controls *ngIf="item.Image_Url.includes('.mp4')" class="image-list product-card-image" poster="{{item.DefaultImageVideo}}">
+                <source src="{{them.configUrlBasicImage}}{{item.Image_Url}}" type="video/mp4">
+              </video>
+              <a [href]="onProductDetail(item.ID,'W')">
+                <img *ngIf="!item.Image_Url.includes('.mp4')" appImgLoad [src]="them.getDisplayImageUrl(item.Image_Url, item)" (error)="them.onSmallImageError($event, item.Image_Url, item)" alt="{{item.Name}}" class="img-responsive image-list product-card-image" loading="lazy">
+              </a>
+
+
+              <span class="tag2 hot product-card-discount" *ngIf="item.IsOffPercent>0 || item.DiscountPrice>0">
+                %{{item.OffPercent}}
+              </span>
+              <img *ngIf="item.AvailableCount==0" src="/assets/image/Sold.png" class="Sold" />
+              <span class="Barcode product-card-barcode" *ngIf="item.AvailableCount>0 && item.BarCode">
+                {{item.BarCode}}
+              </span>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+
+            <div class="product-deatil product-card-body">
+              <h6 class="name product-card-name">
+
+                {{item.Name}}
+
+
+
+              </h6>
+              <span class="product-card-group">{{item.ProductGroup_Title }}</span>
+              <div class="product-card-meta">
+                <div class="price-container product-card-price">
+                  <h6 class="price-text-color product-card-price-old" [ngClass]="{'discountPrice':item.DiscountPrice>0}">{{item.PriceSales | number:'4.0-0'}}  {{item.CourrencyName}}</h6>
+                    <h6 class="price-text-color product-card-price-main" *ngIf="item.DiscountPrice>0; else normalLargePrice">{{item.PriceSales-item.DiscountPrice | number:'4.0-0'}} {{item.CourrencyName}}</h6>
+                    <ng-template #normalLargePrice>
+                      <h6 class="price-text-color product-card-price-main">{{item.PriceSales | number:'4.0-0'}} {{item.CourrencyName}}</h6>
+                    </ng-template>
+                </div>
+                <div class="rating product-card-rating">
+                  <i class="price-text-color fa fa-star" *ngIf="item.Grad>=1"></i>
+                  <i class="price-text-color fa fa-star" *ngIf="item.Grad>=2"></i>
+                  <i class="price-text-color fa fa-star" *ngIf="item.Grad>=3"></i>
+                  <i class="price-text-color fa fa-star" *ngIf="item.Grad>=4"></i>
+                  <i class="price-text-color fa fa-star" *ngIf="item.Grad>=5"></i>
+                  <p class="vc product-card-vc" *ngIf="item.DiscountPrice>0">{{'Discount' | translate}} %{{item.OffPercent}}</p>
+                </div>
+              </div>
+
+              <p class="tag1 product-card-compare">
+                <label class="product-compare-check">
+                  <input type="checkbox" [(ngModel)]="item.Comparison" [ngModelOptions]="{standalone: true}" (change)="onSelectCompar()" >
+                  <span>مقایسه شود</span>
+                </label>
+
+
+
+              </p>
+            </div>
+            <div class="description product-card-description">
+              <p>{{item.SumerySpecification}} </p>
+
+
+            </div>
+
+            <div class="product-info smart-form product-card-actions">
+              <div class="product-card-actions-row">
+                <div class="product-card-action-item">
+                  <button class="btn_offer" [ngStyle]="{'color': them.ButtonFontColor,'background-color':them.ButtonColor}" (click)="onSelectProductOrder(item.ID)" *ngIf="item.IsAvailable==true"><i class="fa fa-shopping-cart"></i> {{'Add' | translate}}</button>
+                  <button class="btn_offer" disabled="disabled" [ngStyle]="{'color': them.ButtonFontColor,'background-color':them.ButtonColor}" *ngIf="item.IsAvailable==false"> {{'NotAvailable' | translate}}</button>
+                </div>
+                <div class="product-card-action-item">
+                  <a class="btn_price btn-details themed-details-btn" [href]="onProductDetail(item.ID,'W')"> <i class="fa fa-list"></i>  {{'MoreDeails' | translate}} </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- end product -->
+    </div>
+
+  </div>

@@ -1,0 +1,113 @@
+.pls-track {
+  display: flex;
+  flex-direction: row;
+  direction: rtl;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 4px 2px 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pls-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.pls-track::-webkit-scrollbar-thumb {
+  background: #d2c6ad;
+  border-radius: 999px;
+}
+
+.pls-card {
+  flex: 0 0 240px;
+  background: #fff;
+  border: 1px solid #eee7da;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(58, 43, 20, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pls-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(58, 43, 20, 0.1);
+}
+
+.pls-media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  background: linear-gradient(180deg, #fcfbf8, #f0ebe1);
+  text-decoration: none;
+  text-align: center;
+  overflow: hidden;
+}
+
+.pls-image {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.pls-discount {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #c8a627;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pls-body {
+  padding: 12px;
+}
+
+.pls-name {
+  display: block;
+  min-height: 40px;
+  margin-bottom: 8px;
+  color: #29261f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.pls-name:hover {
+  color: #8c7134;
+  text-decoration: none;
+}
+
+.pls-price-old {
+  font-size: 12px;
+  color: #8d8679;
+  margin: 0;
+}
+
+.pls-price-main {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 2px 0 0;
+}
+
+@media only screen and (max-width: 575px) {
+  .pls-card {
+    flex-basis: 200px;
+  }
+
+  .pls-media {
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
+}

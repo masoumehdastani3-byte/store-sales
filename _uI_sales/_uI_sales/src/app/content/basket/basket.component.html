@@ -1,0 +1,130 @@
+<!--سبد خرید-->
+<div class="container basket-page">
+  <div class="basket-shell">
+    <div class="basket-head">
+      <h1 class="basket-title">
+        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+        {{ 'Menu.ShoppingBasket' | translate }}
+      </h1>
+      <p class="basket-subtitle">اقلام انتخاب‌شده را بررسی و سفارش را تکمیل کنید.</p>
+    </div>
+
+    <div class="basket-table-wrap respons">
+      <table class="table basket-table">
+        <thead>
+          <tr>
+            <th scope="col">{{ 'ProductName' | translate }}</th>
+            <th scope="col">{{ 'Count' | translate }}</th>
+            <th scope="col">{{ 'UnitPrice' | translate }}</th>
+            <th scope="col">{{ 'Discount' | translate }}</th>
+            <th scope="col">{{ 'Total' | translate }}</th>
+            <th scope="col">{{ 'Panel.Delete' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of productService.Order.OrderDetails" class="respons-basket basket-row">
+            <td data-label="نام کالا">
+              <a class="basket-product-link" [href]="onProductDetail(item.ProductID,'W')">{{ item.ProducName }}</a>
+            </td>
+            <td data-label="تعداد">
+              <input type="number" min="1" max="{{item.AvalaibleCount}}" (change)="AvalaibleCount()" readonly [(ngModel)]="item.ShoppingCount" [ngModelOptions]="{standalone: true}" *ngIf="item.AvalaibleCount>1" />
+              <span *ngIf="item.AvalaibleCount==1">{{ item.ShoppingCount }}</span>
+            </td>
+            <td data-label="قیمت واحد">{{ them.parseNumber(item.UnitPrice) }}</td>
+            <td data-label="تخفیف">{{ them.parseNumber(item.TotalDiscount) }}</td>
+            <td data-label="جمع کل">{{ them.parseNumber((item.UnitPrice-item.TotalDiscount)*item.ShoppingCount) }}</td>
+            <td data-label="حذف">
+              <button type="button" class="basket-delete-btn" ngbTooltip="{{'Panel.Delete' | translate}}" (click)="DeleteBasket(item.ProductID)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
+          <tr class="basket-total-row">
+            <td colspan="4">
+              <span class="basket-total-label">{{ 'Total' | translate }}</span>
+            </td>
+            <td>
+              <strong class="basket-total-value">{{ them.parseNumber(productService.Order.Total) }}</strong>
+            </td>
+            <td>تومان</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="basket-form-shell">
+      <h2 class="basket-form-title">{{ 'CustomerInformation' | translate }}</h2>
+      <form [formGroup]="CustomerForm" class="basket-form">
+        <div class="form-group row">
+          <label for="Mobile" class="col-sm-3 col-form-label">{{ 'Panel.Mobile' | translate }} <samp class="basket-required">({{ 'Panel.required' | translate }})</samp></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="Mobile" placeholder="09126700000" maxlength="14" formControlName="Mobile" [ngClass]="{ 'has-error': isSubmitted && formControlsCustomer.Mobile.errors }" />
+            <samp *ngIf="isSubmitted && formControlsCustomer.Mobile.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticCodeMelli" class="col-sm-3 col-form-label">{{ 'Panel.CodeMelli' | translate }} <samp class="basket-required">({{ 'Panel.required' | translate }})</samp></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="staticCodeMelli" placeholder="0050000000" maxlength="10" formControlName="CodeMelli" [ngClass]="{ 'has-error': isSubmitted && formControlsCustomer.CodeMelli.errors }" />
+            <samp *ngIf="isSubmitted && formControlsCustomer.CodeMelli.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="FullName" class="col-sm-3 col-form-label">{{ 'FullName' | translate }} <samp class="basket-required">({{ 'Panel.required' | translate }})</samp></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="FullName" formControlName="FullName" maxlength="50" [ngClass]="{ 'has-error': isSubmitted && formControlsCustomer.FullName.errors }" />
+            <samp *ngIf="isSubmitted && formControlsCustomer.FullName.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="City" class="col-sm-3 col-form-label">{{ 'Panel.City' | translate }} <samp class="basket-required">({{ 'Panel.required' | translate }})</samp></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="City" formControlName="City" maxlength="50" [ngClass]="{ 'has-error': isSubmitted && formControlsCustomer.City.errors }" />
+            <samp *ngIf="isSubmitted && formControlsCustomer.City.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Address" class="col-sm-3 col-form-label">{{ 'Panel.Address' | translate }} <samp class="basket-required">({{ 'Panel.required' | translate }})</samp></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="Address" formControlName="Address" maxlength="200" [ngClass]="{ 'has-error': isSubmitted && formControlsCustomer.Address.errors }" />
+            <samp *ngIf="isSubmitted && formControlsCustomer.Address.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Email" class="col-sm-3 col-form-label">{{ 'Panel.Email' | translate }} <samp class="basket-required">({{ 'Panel.required' | translate }})</samp></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="Email" formControlName="Email" maxlength="200" [ngClass]="{ 'has-error': isSubmitted && formControlsCustomer.Email.errors }" />
+            <samp *ngIf="isSubmitted && formControlsCustomer.Email.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Description" class="col-sm-3 col-form-label">{{ 'Panel.Description' | translate }}</label>
+          <div class="col-sm-9">
+            <textarea class="form-control" id="Description" placeholder="{{'Panel.Description' | translate}}" formControlName="Description" rows="3" maxlength="200"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-9">
+            <div class="custom-control custom-checkbox checkbox-lg">
+              <input type="checkbox" class="custom-control-input" id="checkbox-2" formControlName="Confirm">
+              <label class="custom-control-label" for="checkbox-2">{{ 'ConfirmRule' | translate }} <samp class="basket-required">({{ 'Panel.required' | translate }})</samp></label>
+            </div>
+            <samp *ngIf="isSubmitted && formControlsCustomer.Confirm.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+          </div>
+        </div>
+        <div class="basket-actions">
+          <button type="button" class="btn_price basket-submit basket-submit-iranzamin" (click)="SaveOrder(1)">
+            پرداخت از طریق بانک ایران زمین
+          </button>
+          <button type="button" class="btn_price basket-submit basket-submit-saderat" (click)="SaveOrder(2)">
+            پرداخت از طریق بانک صادرات
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--PageGenerator_3--->
+  <div id="PageGenerator_3" class="basket-page-generator"></div>
+</div>

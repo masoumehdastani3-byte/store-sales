@@ -1,0 +1,13 @@
+<div id="doit" class="easy-search-wrap">
+  <div class="easy-search-head">
+    <div class="easy-search-title">{{'easySearch' | translate}}</div>
+    <div class="easy-search-subtitle">انتخاب سریع بر اساس ویژگی‌های پرکاربرد</div>
+  </div>
+  <div class="easy-search-tags">
+    <button class="btn btn-outline-info btn-sm m-1"
+            *ngFor="let item of productService.BasicDataParam6"
+            (click)=productService.DataParam6Select(item.ID,item.Title,item.CodeChar)>
+      {{item.Title}}
+    </button>
+  </div>
+</div>

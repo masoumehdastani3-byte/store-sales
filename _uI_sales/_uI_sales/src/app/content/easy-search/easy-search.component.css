@@ -1,0 +1,53 @@
+ :host {
+   display: block;
+ }
+
+ .easy-search-wrap {
+   text-align: right;
+ }
+
+ .easy-search-head {
+   margin-bottom: 14px;
+ }
+
+ .easy-search-title {
+   color: #2f2b24;
+   font-size: 24px;
+   font-weight: 700;
+   line-height: 1.6;
+ }
+
+ .easy-search-subtitle {
+   color: #8a8375;
+   font-size: 13px;
+   margin-top: 4px;
+ }
+
+ .easy-search-tags {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-end;
+   gap: 6px;
+ }
+
+ .easy-search-tags .btn {
+   border-radius: 999px;
+   padding: 4px 10px;
+   font-size: 12px;
+   line-height: 1.4;
+   min-height: 30px;
+   border-color: #d7c6a0;
+   color: #7d6837;
+   background: linear-gradient(180deg, #fffefb, #f5efdf);
+   box-shadow: 0 3px 8px rgba(79, 63, 28, 0.08);
+   transition: all 0.18s ease;
+   margin: 0 !important;
+ }
+
+ .easy-search-tags .btn:hover,
+ .easy-search-tags .btn:focus {
+   color: #5d4b22;
+   border-color: #b99a56;
+   background: linear-gradient(180deg, #fff7e8, #efe2bf);
+   box-shadow: 0 6px 12px rgba(79, 63, 28, 0.12);
+ }

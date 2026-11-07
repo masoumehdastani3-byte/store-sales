@@ -1,0 +1,37 @@
+<div class="container track-page">
+  <div class="track-shell">
+    <div class="track-head">
+      <h1 class="track-title">
+        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+        {{ 'Menu.TrackOrder' | translate }}
+      </h1>
+      <p class="track-subtitle">برای مشاهده خریدها، موبایل و کد ملی خود را وارد کنید.</p>
+    </div>
+
+    <div class="track-form-shell">
+      <h2 class="track-form-title">{{ 'CustomerInformation' | translate }}</h2>
+      <form [formGroup]="CustomerForm" class="track-form">
+        <div class="form-group row">
+          <label for="Mobile" class="col-sm-3 col-form-label">{{ 'Panel.Mobile' | translate }}</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="Mobile" placeholder="09126700000" formControlName="Mobile" [ngClass]="{ 'has-error': isSubmitted && formControlsCustomer.Mobile.errors }" />
+            <samp *ngIf="isSubmitted && formControlsCustomer.Mobile.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticCodeMelli" class="col-sm-3 col-form-label">{{ 'Panel.CodeMelli' | translate }}</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="staticCodeMelli" placeholder="0050000000" formControlName="CodeMelli" [ngClass]="{ 'has-error': isSubmitted && formControlsCustomer.CodeMelli.errors }" />
+            <samp *ngIf="isSubmitted && formControlsCustomer.CodeMelli.errors" class="error-red">{{ 'Panel.required' | translate }}</samp>
+          </div>
+        </div>
+
+        <div class="track-actions">
+          <button type="button" class="btn_price track-submit" [ngStyle]="{'color': them.PriceFontColor,'background-color':them.PriceColor}" (click)="onSubmit()">
+            {{ 'Submit' | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

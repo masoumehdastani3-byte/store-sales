@@ -1,0 +1,218 @@
+
+<div [ngClass]="{'visible':!(visibleBasket || visibleDetails),'hidden':(visibleBasket || visibleDetails)}">
+  <div class="main-search" [ngStyle]="{'background-image': 'url('+them.BackgroundImageUrl+')'}">
+    <h1 class="threed">{{them.ProductGroupName}}</h1>
+  </div>
+  <div class="container search-result-page">
+
+    <!--جستجو-->
+    <section class="search-result-section">
+      <div class="search-result-shell">
+        <div class="search_container">
+
+          <div class="search_form_container">
+            <form action="#" class="search_form" id="search_form" [ngStyle]="{'color': them.HeaderFontColor,'background-color':them.HeaderColor}">
+              <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+                <div class="search_inputs d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+
+
+                  <div>
+                    <div class="display-flex">
+                    <input type="text" class="search_input" *ngIf="productservice.ParamShowSearch.length > 0" [placeholder]="productservice.ParamShowSearch.length > 0 ?productservice.ParamShowSearch[0].GroupTypeName:''" 
+                    (click)="productservice.ShowListParam1()" [(ngModel)]="productservice.Param1" 
+                    [ngModelOptions]="{standalone: true}"  id="Param1" autocomplete="off" readonly><!--(keyup)="productservice.BasicDataFilter($event)"-->
+                    <span class="clear-texbox" id="span1" (click)="productservice.ParamClose('span1','Param1')" >&times;</span>
+                  </div>
+                    <div class="dropdown-search" *ngIf="productservice.Param1Show">
+                      <option *ngFor="let item of productservice.basicDataParam1" [attr.data-id]="item.ID" [attr.data-text]="item.Title" (click)=productservice.DataParam1Select(item.ID,item.Title)>
+                        {{item.Title}}
+                      </option>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="display-flex">
+                    <input type="text" class="search_input" *ngIf="productservice.ParamShowSearch.length > 1" readonly [placeholder]="productservice.ParamShowSearch.length > 0 ?productservice.ParamShowSearch[1].GroupTypeName:''" (click)="productservice.ShowListParam2()" [(ngModel)]="productservice.Param2" [ngModelOptions]="{standalone: true}" (keyup)="productservice.BasicDataFilter($event)" id="Param2" autocomplete="off">
+                    <span class="clear-texbox" id="span2" (click)="productservice.ParamClose('span2','Param2')" >&times;</span>
+                   
+                  </div>
+                    <div class="dropdown-search" *ngIf="productservice.Param2Show">
+                      <option *ngFor="let item of productservice.basicDataParam2" [attr.data-id]="item.ID" [attr.data-text]="item.Title" (click)=productservice.DataParam2Select(item.ID,item.Title)>
+                        {{item.Title}}
+                      </option>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="display-flex">
+                    <input type="text" class="search_input" *ngIf="productservice.ParamShowSearch.length > 2"  readonly [placeholder]="productservice.ParamShowSearch.length > 0 ?productservice.ParamShowSearch[2].GroupTypeName:''" (click)="productservice.ShowListParam3()" [(ngModel)]="productservice.Param3" [ngModelOptions]="{standalone: true}" (keyup)="productservice.BasicDataFilter($event)" id="Param3" autocomplete="off">
+                    <span class="clear-texbox" id="span3" (click)="productservice.ParamClose('span3','Param3')" >&times;</span>
+                   
+                  </div>
+                    <div class="dropdown-search" *ngIf="productservice.Param3Show">
+                      <option *ngFor="let item of productservice.basicDataParam3" [attr.data-id]="item.ID" [attr.data-text]="item.Title" (click)=productservice.DataParam3Select(item.ID,item.Title)>
+                        {{item.Title}}
+                      </option>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="display-flex">
+                    <input type="text" class="search_input" *ngIf="productservice.ParamShowSearch.length > 3" readonly [placeholder]="productservice.ParamShowSearch.length > 0 ?productservice.ParamShowSearch[3].GroupTypeName:''" (click)="productservice.ShowListParam4()" [(ngModel)]="productservice.Param4" [ngModelOptions]="{standalone: true}" (keyup)="productservice.BasicDataFilter($event)" id="Param4" autocomplete="off">
+                    <span class="clear-texbox" id="span4" (click)="productservice.ParamClose('span4','Param4')" >&times;</span>
+                   
+                  </div>
+                    <div class="dropdown-search" *ngIf="productservice.Param4Show">
+                      <option *ngFor="let item of productservice.basicDataParam4" [attr.data-id]="item.ID" [attr.data-text]="item.Title" (click)=productservice.DataParam4Select(item.ID,item.Title)>
+                        {{item.Title}}
+                      </option>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="display-flex">
+                    <input type="text" class="search_input" *ngIf="productservice.ParamShowSearch.length > 4" readonly [placeholder]="productservice.ParamShowSearch.length > 0 ?productservice.ParamShowSearch[4].GroupTypeName:''" (click)="productservice.ShowListParam5()" [(ngModel)]="productservice.Param5" [ngModelOptions]="{standalone: true}" (keyup)="productservice.BasicDataFilter($event)" id="Param5" autocomplete="off">
+                    <span class="clear-texbox" id="span5" (click)="productservice.ParamClose('span5','Param5')" >&times;</span>
+                   
+                  </div>
+                    <div class="dropdown-search" *ngIf="productservice.Param5Show">
+                      <option *ngFor="let item of productservice.basicDataParam5" [attr.data-id]="item.ID" [attr.data-text]="item.Title" (click)=productservice.DataParam5Select(item.ID,item.Title)>
+                        {{item.Title}}
+                      </option>
+                    </div>
+
+                  </div>
+
+
+                </div>
+                <button class="search_button" Id="search_button" [ngStyle]="{'color': them.ButtonFontColor,'background-color':them.ButtonColor}" (click)="SearchProduct('param')">{{ 'Search' | translate }} </button>
+
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!--جستجو سریع-->
+    <section class="search-result-section">
+      <div class="search-result-shell">
+        <app-easy-search></app-easy-search>
+      </div>
+    </section>
+    <!--فیلتر-->
+    <section class="search-result-section">
+      <div class="search-result-shell search-toolbar-shell">
+        <div class="search-toolbar">
+          <div class="search-toolbar-main">
+            <span class="sort-label">
+              <i class="fa fa-sort" aria-hidden="true"></i>
+              {{ 'SortBy' | translate }}
+            </span>
+            <div class="sort-chips">
+              <button type="button"
+                      class="sort-chip"
+                      [class.is-active]="activeSort === 'Arzan'"
+                      (click)="onSortBy('PriceSales','1','Arzan')">{{ 'Cheapest' | translate }}</button>
+              <button type="button"
+                      class="sort-chip"
+                      [class.is-active]="activeSort === 'Geran'"
+                      (click)="onSortBy('PriceSales','0','Geran')">{{ 'Expensive' | translate }}</button>
+              <button type="button"
+                      class="sort-chip"
+                      [class.is-active]="activeSort === 'VisitedCount'"
+                      (click)="onSortBy('VisitedCount','0','VisitedCount')">{{ 'TheMostVisited' | translate }}</button>
+              <button type="button"
+                      class="sort-chip"
+                      [class.is-active]="activeSort === 'IsAvailable'"
+                      (click)="onSortBy('IsAvailable','0','IsAvailable')">{{ 'OnlyAvailable' | translate }}</button>
+              <button type="button"
+                      class="sort-chip"
+                      [class.is-active]="activeSort === 'IsSpecialSales'"
+                      (click)="onSortBy('IsSpecialSales','0','IsSpecialSales')">{{ 'SpecialSale' | translate }}</button>
+            </div>
+          </div>
+
+          <div class="search-layout-actions">
+            <span class="layout-label">نمایش</span>
+            <div class="layout-toggle">
+              <button type="button"
+                      class="layout-chip"
+                      [class.is-active]="Vertical"
+                      (click)="Vertical = true">
+                <i class="fa fa-th-large" aria-hidden="true"></i>
+                {{ 'Vertical' | translate }}
+              </button>
+              <button type="button"
+                      class="layout-chip"
+                      [class.is-active]="!Vertical"
+                      (click)="Vertical = false">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+                {{ 'Horizontal' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--لیست محصولات-->
+    <section class="search-result-section" *ngIf="!Vertical">
+      <div class="search-result-shell search-horizontal-shell">
+        <app-product-list-small [products]="Product" [IsHomePage]="false"></app-product-list-small>
+      </div>
+    </section>
+    <app-product-list-large [products]="Product" [IsHomePage]="false" [ComparisonProduct]="_ComparisonProduct" *ngIf="Vertical"></app-product-list-large>
+    <!--صفحه بندی-->
+    <div class="row search-pagination-row" *ngIf="productservice.Paggin.length>0">
+      <div class="col-md-12">
+
+        <nav aria-label="Page navigation" class="search-pagination-shell">
+          <span class="sort-color"> {{'PageTo' | translate}}  </span>
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" (click)="onSelectPaggingPrevious(-1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li class="page-item" *ngFor="let item of productservice.Paggin">
+              <a class="page-link" (click)="onSelectPagging(item.pageNumber)" id="a{{item.pageNumber}}">{{item.pageNumber}}</a>
+            </li>
+
+            <li class="page-item">
+              <a class="page-link" (click)="onSelectPaggingPrevious(1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!--PageGenerator_2--->
+    <div id="PageGenerator_2">
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<ngb-carousel>
+  <ng-template ngbSlide *ngFor="let img of item.ProductImage">
+    <img src="{{them.configUrlBasicImage}}{{img.Image_Url}}" alt="{{img.Description}}" style="width:100%;height:400px;">
+    <div class="carousel-caption">
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </div>
+  </ng-template>
+
+</ngb-carousel>-->
